@@ -1,0 +1,7 @@
+data/*
+data_old/*
+result/*
+scripts/*
+*/__pycache__/*
+
+data.tar.gz
