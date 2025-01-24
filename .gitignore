@@ -2,6 +2,6 @@ data/*
 data_old/*
 result/*
 scripts/*
-*/__pycache__/*
+*.pyc
 
 data.tar.gz
