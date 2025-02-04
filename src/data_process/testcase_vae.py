@@ -93,7 +93,7 @@ def main(program, version):
             inputs_pre.append(matrix_x[testcase_num])
     print(np.array(inputs_pre).shape)
     inputs = torch.FloatTensor(np.array(inputs_pre))
-
+    inputs = torch.clamp(inputs, 0, 1)
     INUNITS = len(inputs_pre[0])
     print(INUNITS)
     TESTNUM = minority_num
@@ -107,7 +107,7 @@ def main(program, version):
     device = 'cuda'
     h_dim=800
     z_dim=100
-    lr=0.0003
+    lr=0.00015
     epochs=15
     class VAE(nn.Module):
         def __init__(self, input_dim=INUNITS, h_dim=h_dim, z_dim=z_dim):
@@ -237,7 +237,10 @@ def main(program, version):
         # 前向传播
         x_hat, mu, log_var = model(x)  # 模型调用会自动调用model中的forward函数
         loss, BCE, KLD = loss_function(x_hat, x, mu, log_var)  # 计算损失值，即目标函数
+      
         if epoch%1000==0:
+            # print('BCE',BCE)
+            # print('kld',KLD)
             # print(mu)
             # print(log_var)
             print('epoch:',epoch,'loss:',loss.detach().cpu())

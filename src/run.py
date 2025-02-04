@@ -190,8 +190,8 @@ def main():
             # cal_diffusion(program, version, methods)
             # cal_gan(program, version, methods)
             # cal_smote(program, version, methods)
-            # cal_vae(program, version, methods)
-            cal_gpt(program, version, methods)
+            cal_vae(program, version, methods)
+            # cal_gpt(program, version, methods)
             print(f"Done processing buggy-version `{version}` of program `{program}`")
         print(f"Done processing program `{program}`\n")
 
